@@ -3,6 +3,10 @@ import { Button } from 'src/ui/button';
 import { useRef, useState } from 'react';
 import styles from './ArticleParamsForm.module.scss';
 import { Select } from 'src/ui/select';
+
+import { RadioGroup } from 'src/ui/radio-group';
+import { Separator } from 'src/ui/separator';
+import { useCloseOnOutsideClickOrEsc } from 'src/ui/select/hooks/UseCloseOnOutsideClickOrEsc';
 import {
 	backgroundColors,
 	contentWidthArr,
@@ -12,9 +16,6 @@ import {
 	fontSizeOptions,
 	OptionType,
 } from 'src/constants/articleProps';
-import { RadioGroup } from 'src/ui/radio-group';
-import { Separator } from 'src/ui/separator';
-import { useCloseOnOutsideClickOrEsc } from 'src/ui/select/hooks/UseCloseOnOutsideClickOrEsc';
 
 interface ArticleParamsFormProps {
 	currentArticleState: {
@@ -64,10 +65,22 @@ export const ArticleParamsForm = ({
 
 	const handleReset = () => {
 		setCurrentArticleState(defaultArticleState);
+		setSelectedFont(defaultArticleState.fontFamilyOption);
+		setSelectedSize(defaultArticleState.fontSizeOption);
+		setSelectedColor(defaultArticleState.fontColor);
+		setSelectedBackground(defaultArticleState.backgroundColor);
+		setSelectedWidth(defaultArticleState.contentWidth);
 	};
 
 	const handleSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
+		console.log({
+			fontFamilyOption: selectedFont,
+			fontSizeOption: selectedSize,
+			fontColor: selectedColor,
+			backgroundColor: selectedBackground,
+			contentWidth: selectedWidth,
+		});
 		setCurrentArticleState({
 			fontFamilyOption: selectedFont,
 			fontSizeOption: selectedSize,

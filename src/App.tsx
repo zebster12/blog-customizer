@@ -2,7 +2,7 @@ import { defaultArticleState, OptionType } from 'src/constants/articleProps';
 import { ArticleParamsForm } from './components/article-params-form';
 import { CSSProperties, useState } from 'react';
 import { Article } from './components/article';
-import './styles/index.module.scss';
+import styles from './styles/index.module.scss';
 
 interface ArticleState {
 	fontFamilyOption: OptionType;
@@ -22,7 +22,7 @@ export const App = () => {
 
 	return (
 		<main
-			className='main'
+			className={styles.main}
 			style={
 				{
 					'--font-family': currentArticleState.fontFamilyOption.value,
