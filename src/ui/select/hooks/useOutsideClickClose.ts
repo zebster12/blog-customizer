@@ -18,7 +18,6 @@ export const useOutsideClickClose = ({
 			const { target } = event;
 
 			if (target instanceof Node && !rootRef.current?.contains(target)) {
-				console.log('dsadas');
 				isOpen && onClose?.();
 				onChange?.(false);
 			}
